@@ -1,0 +1,111 @@
+{% load staticfiles bsbanners_tags %}
+
+{% if bsbannerblock.bannertype == 1 %}
+<script type='text/javascript'>
+window.setTimeout(function()
+{
+    // Prepare the carousel
+    var carousel{{ bsbannerblock.id }}options = {
+        interval: {{ bsbannerblock.interval }},
+        {% if bsbannerblock.pause %}pause: "hover",{% endif %}
+        wrap: {% if bsbannerblock.wrap %}true{% else %}false{% endif %},
+    }
+    jQuery('#{{ bsbannerblock.slug }} .carousel-caption').hide();
+    jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').show();
+    // Activate the carousel
+    jQuery('.carousel').carousel(carousel{{ bsbannerblock.id }}options);
+{% if bsbannerblock.animate %}
+    // Set the carousel animations
+    jQuery('.carousel').on('slide.bs.carousel', function() {
+        jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').slideUp(500);
+    });
+    jQuery('.carousel').on('slid.bs.carousel', function() {
+        jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').slideDown(300);
+    });
+{% endif %}
+}, {{ bsbannerblock.interval }});
+</script>
+
+
+<!-- Carousel
+================================================== -->
+<div id='{{ bsbannerblock.slug }}' class="carousel slide">
+    <div class="carousel-inner">
+    {% for slide in slides %}
+    <div class="item{% if slide.isfirst %} active{% endif %}">
+        {% if slide.link_url and slide.image %}
+        <a href="{{ slide.link_url }}">
+        {% endif %}
+        {% if slide.image %}
+        <img src="{{ MEDIA_URL }}{{ slide.image }}" alt="{{ slide.title }}">
+        {% endif %}
+        {% if slide.link_url and slide.image %}
+        </a>
+        {% endif %}
+        <div class="carousel-container">
+        <div class="carousel-caption">
+            {% if slide.show_title %}
+            <h1>{{ slide.title }}</h1>
+            {% endif %}
+            <div>{{ slide.content | safe }}</div>
+            {% if slide.link_url %}
+            <a class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+                href="{{ slide.link_url }}">
+            {% endif %}
+            {% if bsbannerblock.ctachevron == 'left' %}
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {% endif %}
+            {{ slide.cta }}
+            {% if bsbannerblock.ctachevron == 'right' %}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            {% endif %}
+            {% if slide.link_url %}
+            </a>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <a class="left carousel-control" href="#{{ bsbannerblock.slug }}" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#{{ bsbannerblock.slug }}" data-slide="next">&rsaquo;</a>
+    {% if bsbannerblock.showindicators %}
+    <ul class="carousel-indicators">
+    {% for slide in slides %}
+        <li{% if slide.isfirst %} class="active"{% endif %}>&nbsp;</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</div><!-- /.carousel -->
+
+{% elif bsbannerblock.bannertype == 2 %}
+<div id='{{ bsbannerblock.slug }}' class="jumbotron">
+    <div class="container">
+    {% for slide in slides %}
+        <div>
+        {% if bsbannerblock.show_title %}
+            <h1>{{ slide.title }}</h1>
+        {% endif %}
+        {{ slide.content|safe }}
+        {% if slide.cta %}
+            {% if slide.link_url %}
+            <a class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+                href="{{ slide.link_url }}">
+            {% endif %}
+            {% if bsbannerblock.ctachevron == 'left' %}
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {% endif %}
+            {{ slide.cta }}
+            {% if bsbannerblock.ctachevron == 'right' %}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            {% endif %}
+            {% if slide.link_url %}
+            </a>
+            {% endif %}
+        {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endif %}
