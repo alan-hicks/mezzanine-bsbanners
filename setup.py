@@ -13,7 +13,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='mezzanine-bsbanners',
-    version='0.1.0',
+    version='0.1.1',
     packages=['mezzanine_bsbanners'],
     include_package_data=True,
     license='BSD License',
