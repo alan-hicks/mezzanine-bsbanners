@@ -5,5 +5,6 @@
 #----------------------------------------------------------------------
 
 """
-Bootstrap Banners - making banners easier
+Mezzanine BS Banners
+Making it easier to manage attention grabbing and compelling banners
 """
