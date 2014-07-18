@@ -151,8 +151,9 @@ class Slides(RichText):
         help_text=_('Text used for the call to action button'),
         blank=True, null=True
     )
-    link_url = models.URLField(
+    link_url = models.CharField(
         _('Link'),
+        max_length=200,
         help_text=_('Link for the image and call to action button'),
         blank=True, null=True
     )
