@@ -83,7 +83,7 @@ window.setTimeout(function()
     <div class="container">
     {% for slide in slides %}
         <div>
-        {% if bsbannerblock.show_title %}
+        {% if slide.show_title %}
             <h1>{{ slide.title }}</h1>
         {% endif %}
         {{ slide.content|safe }}
