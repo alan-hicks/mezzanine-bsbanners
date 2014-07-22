@@ -13,14 +13,14 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='mezzanine-bsbanners',
-    version='0.1.1',
+    version='0.1.2',
     packages=['mezzanine_bsbanners'],
     include_package_data=True,
     license='BSD License',
     description=DESCRIPTION,
     long_description=README,
     url='http://p-o.co.uk/tech-articles/mezzanine-bootstrap-banners/',
-    download_url='http://p-o.co.uk/tech-articles/mezzanine-bootstrap-banners/',
+    download_url='https://pypi.python.org/pypi/mezzanine-bsbanners',
     author='Alan Hicks',
     author_email='ahicks@p-o.co.uk',
     requires=['mezzanine'],

@@ -36,17 +36,17 @@ Quick start
     )
 
 
-3. Run `python manage.py syncdb` to create the database models.
+3. Run 'python manage.py syncdb' to create the database models.
 
 Usage
 =====
 mezzanine-bsbanners are similar to django-flatblocks.
 
-1. Include bsbanners_tags in the template:
+1. Include bsbanners_tags in the template::
 
     {% load ... bsbanners_tags %}
 
-2. Insert block anywhere in the template:
+2. Insert block anywhere in the template::
 
     {% bsbanner "My Banner" %}
     {% bsbanner {block} %}
@@ -70,6 +70,8 @@ public.
 
 For general questions or comments, please contact  `ahicks@p-o.co.uk`_.
 
+`Project website`_
+
 Communications are expected to conform to the `Django Code of Conduct`_.
 
 .. GENERAL LINKS
@@ -79,6 +81,7 @@ Communications are expected to conform to the `Django Code of Conduct`_.
 .. _`Django Code of Conduct`: https://www.djangoproject.com/conduct/
 .. _`Python`: http://python.org/
 .. _`Persistent Objects Ltd`: http://p-o.co.uk/
+.. _`Project website`: http://p-o.co.uk/tech-articles/mezzanine-bootstrap-banners/
 .. _`Mezzanine`: http://mezzanine.jupo.org
 
 
