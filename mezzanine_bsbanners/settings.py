@@ -14,4 +14,4 @@ from django.conf import settings
 # PATH AND URL SETTINGS
 
 # Main Media Settings
-MEDIA = getattr(settings, "BSBANNERS_MEDIA", 'banners/')
+MEDIA = getattr(settings, "BSBANNERS_MEDIA", 'slides/')
