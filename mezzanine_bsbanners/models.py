@@ -16,7 +16,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.core.models import Slugged, RichText
-from mezzanine.conf import settings
+from mezzanine_bsbanners import settings
 
 @python_2_unicode_compatible
 class Banners(Slugged):
@@ -167,7 +167,7 @@ class Slides(RichText):
     banner = models.ForeignKey(Banners)
     image = models.FileField(
         _("Image"),
-        upload_to=settings.BSBANNERS_MEDIA,
+        upload_to=settings.MEDIA,
         max_length=255,
         null=True, blank=True
     )
