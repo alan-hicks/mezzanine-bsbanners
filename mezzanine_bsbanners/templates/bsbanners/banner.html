@@ -10,17 +10,17 @@ window.setTimeout(function()
         {% if bsbannerblock.pause %}pause: "hover",{% endif %}
         wrap: {% if bsbannerblock.wrap %}true{% else %}false{% endif %},
     }
-    jQuery('#{{ bsbannerblock.slug }} .carousel-caption').hide();
-    jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').show();
+    jQuery('#{{ bsbannerblock.slug }}-carousel .carousel-caption').hide();
+    jQuery('#{{ bsbannerblock.slug }}-carousel .active .carousel-caption').show();
     // Activate the carousel
     jQuery('.carousel').carousel(carousel{{ bsbannerblock.id }}options);
 {% if bsbannerblock.animate %}
     // Set the carousel animations
     jQuery('.carousel').on('slide.bs.carousel', function() {
-        jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').slideUp(500);
+        jQuery('#{{ bsbannerblock.slug }}-carousel .active .carousel-caption').slideUp(500);
     });
     jQuery('.carousel').on('slid.bs.carousel', function() {
-        jQuery('#{{ bsbannerblock.slug }} .active .carousel-caption').slideDown(300);
+        jQuery('#{{ bsbannerblock.slug }}-carousel .active .carousel-caption').slideDown(300);
     });
 {% endif %}
 }, {{ bsbannerblock.interval }});
@@ -29,7 +29,7 @@ window.setTimeout(function()
 
 <!-- Carousel
 ================================================== -->
-<div id='{{ bsbannerblock.slug }}' class="carousel slide">
+<div id='{{ bsbannerblock.slug }}-carousel' class="carousel slide">
     <div class="carousel-inner">
     {% for slide in slides %}
     <div class="item{% if slide.isfirst %} active{% endif %}">
@@ -67,8 +67,8 @@ window.setTimeout(function()
     </div>
     {% endfor %}
     </div>
-    <a class="left carousel-control" href="#{{ bsbannerblock.slug }}" data-slide="prev">&lsaquo;</a>
-    <a class="right carousel-control" href="#{{ bsbannerblock.slug }}" data-slide="next">&rsaquo;</a>
+    <a class="left carousel-control" href="#{{ bsbannerblock.slug }}-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#{{ bsbannerblock.slug }}-carousel" data-slide="next">&rsaquo;</a>
     {% if bsbannerblock.showindicators %}
     <ul class="carousel-indicators">
     {% for slide in slides %}
@@ -79,7 +79,7 @@ window.setTimeout(function()
 </div><!-- /.carousel -->
 
 {% elif bsbannerblock.bannertype == 2 %}
-<div id='{{ bsbannerblock.slug }}' class="jumbotron">
+<div id='{{ bsbannerblock.slug }}-jumbotron' class="jumbotron">
     <div class="container">
     {% for slide in slides %}
         <div>
