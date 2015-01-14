@@ -81,6 +81,9 @@ class BSBannerBlockNode(template.Node):
 
     def render(self, context):
         try:
+            if isinstance(self.slug, template.Variable): 
+                self.slug = self.slug.resolve(context)
+                
             bsbannerblock = Banners.objects.get(
                 slug=self.slug,
                 status=2,
