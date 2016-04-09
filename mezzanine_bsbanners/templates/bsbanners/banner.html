@@ -108,4 +108,75 @@ window.setTimeout(function()
     </div>
 </div>
 
+{% elif bsbannerblock.bannertype == 3 %}
+    <div id="{{ bsbannerblock.slug }}-bannerblock" class="row carousel">
+    <div class="carousel-inner">
+    {% for slide in slides %}
+    {% if slide.isfirst %}
+        <div class="item active">
+        {% if slide.image %}
+            <a href="{{ slide.link_url }}">
+            <img id="{{ bsbannerblock.slug }}-bannerimg"
+                style="max-width: none;"
+                src="{{ MEDIA_URL }}{{ slide.image }}"
+                alt="{{ slide.title }}">
+            </a>
+        {% endif %}
+        <div class="container">
+        <div class="carousel-caption">
+        {% if slide.show_title %}
+        <h1>
+            {% if slide.link_url %}<a href="{{ slide.link_url }}">{% endif %}
+            {{ slide.title }}
+            {% if slide.link_url %}</a>{% endif %}
+        </h1>
+        {% endif %}
+        <div>{{ slide.content|safe }}</div>
+        {% if slide.cta %}
+        <div>
+            {% if slide.link_url %}
+            <a id="{{ bsbannerblock.slug }}-bannerbtn"
+                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+                title="{% if slide.show_title %}{{ slide.title }}{% endif %}"
+                href="{{ slide.link_url }}">
+            {% endif %}
+            {% if bsbannerblock.ctachevron == 'left' %}
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {% endif %}
+            {{ slide.cta }}
+            {% if bsbannerblock.ctachevron == 'right' %}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            {% endif %}
+            {% if slide.link_url %}
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+        </div>
+        </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(event) {
+            $(function () {
+                var mainbody = $('body');
+                var bodymargintop = parseInt(mainbody.css('padding-top'));
+                var bannerblock = $('#{{ bsbannerblock.slug }}-bannerblock');
+                var bannerimg = $('#{{ bsbannerblock.slug }}-bannerimg');
+                var windowratio = window.innerWidth / window.innerHeight;
+                var bannerratio = bannerimg.width() / bannerimg.height();
+                bannerblock.height(window.innerHeight - bodymargintop);
+                if (windowratio > bannerratio) {
+                    bannerimg.width(window.innerWidth);
+                } else {
+                    bannerimg.height(window.innerHeight - bodymargintop);
+                }
+                bannerblock.css('overflow', 'hidden');
+            })
+        });
+    </script>
+
 {% endif %}
