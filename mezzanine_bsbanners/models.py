@@ -27,9 +27,11 @@ class Banners(Slugged):
     '''
     BANNERTYPE_CAROUSEL = 1
     BANNERTYPE_JUMBOTRON = 2
+    BANNERTYPE_IMAGE = 3
     BANNERTYPE_CHOICES = (
         (BANNERTYPE_CAROUSEL, _('Carousel')),
         (BANNERTYPE_JUMBOTRON, _('Jumbotron')),
+        (BANNERTYPE_IMAGE, _('Image')),
     )
     BUTTON_SIZE_LG = 'lg'
     BUTTON_SIZE_DEFAULT = 'default'
