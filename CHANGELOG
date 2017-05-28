@@ -1,3 +1,8 @@
+Version 0.1.8 (2017-05-28)
+--------------------------
+* Fix typos
+* Version bump to 0.1.8
+
 Version 0.1.6 (2017-05-28)
 --------------------------
 * Updates for Django 1.9
