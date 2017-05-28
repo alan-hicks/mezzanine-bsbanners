@@ -81,9 +81,9 @@ class BSBannerBlockNode(template.Node):
 
     def render(self, context):
         try:
-            if isinstance(self.slug, template.Variable): 
+            if isinstance(self.slug, template.Variable):
                 self.slug = self.slug.resolve(context)
-                
+
             bsbannerblock = Banners.objects.get(
                 slug=self.slug,
                 status=2,
@@ -100,13 +100,11 @@ class BSBannerBlockNode(template.Node):
                 slides.append(slide)
 
             tmpl = loader.get_template(self.template_name)
-            new_context = template.Context(
-                {'bsbannerblock':bsbannerblock,
-                 'slides':slides,
-                 'MEDIA_URL':settings.MEDIA_URL,
-                },
-                autoescape=context.autoescape
-            )
+            new_context = {
+                'bsbannerblock':bsbannerblock,
+                'slides':slides,
+                'MEDIA_URL':settings.MEDIA_URL,
+                }
 
             return tmpl.render(new_context)
         #pylint: disable=no-member

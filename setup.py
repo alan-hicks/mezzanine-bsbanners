@@ -13,10 +13,10 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='mezzanine-bsbanners',
-    version='0.1.5',
+    version='0.1.6',
     packages=['mezzanine_bsbanners'],
     include_package_data=True,
-    license='BSD License',
+    license='BSD',
     description=DESCRIPTION,
     long_description=README,
     url='http://p-o.co.uk/tech-articles/mezzanine-bootstrap-banners/',
@@ -25,7 +25,7 @@ setup(
     author_email='ahicks@p-o.co.uk',
     requires=['mezzanine'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',

@@ -56,7 +56,7 @@ mezzanine-bsbanners are similar to django-flatblocks.
 Dependencies
 ============
 
-* `Django`_ 1.6
+* `Django`_ 1.9
 * `Mezzanine`_ 3.x
 * `Bootstrap`_ 3.x
 

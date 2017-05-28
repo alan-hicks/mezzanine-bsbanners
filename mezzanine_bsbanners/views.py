@@ -10,6 +10,5 @@ Making it easier to manage attention grabbing and compelling banners
 """
 
 from __future__ import unicode_literals
-from django.shortcuts import render
 
 # Create your views here.

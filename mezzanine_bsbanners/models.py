@@ -78,27 +78,28 @@ class Banners(Slugged):
     interval = models.IntegerField(
         'interval',
         help_text=_('The amount of time (in milliseconds) to delay between '
-            'automatically cycling an item'),
+                    'automatically cycling an item'),
         default=5000,
     )
     wrap = models.BooleanField(
         'wrap',
         help_text=_('Whether the carousel should cycle continuously '
-            'or have hard stops'),
+                    'or have hard stops'),
         default=True,
     )
     pause = models.BooleanField(
         'pause',
         help_text=_('Pauses the cycling of the carousel on mouseenter and '
-            'resumes the cycling of the carousel on mouseleave'),
+                    'resumes the cycling of the carousel on mouseleave'),
         default=True,
     )
     showindicators = models.BooleanField(_('Show indicators'), default=True)
     animate = models.BooleanField(_('Animate transitions'), default=True)
-    status = models.SmallIntegerField(_("Status"),
+    status = models.SmallIntegerField(
+        _("Status"),
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED,
         help_text=_("With Draft chosen, will only be shown for admin users "
-            "on the site."))
+                    "on the site."))
 
     def __str__(self):
         return self.title
@@ -171,12 +172,13 @@ class Slides(RichText):
         _("Image"),
         upload_to=settings.MEDIA,
         max_length=255,
-        null=True, blank=True
+        null=True, blank=True,
     )
-    status = models.SmallIntegerField(_("Status"),
+    status = models.SmallIntegerField(
+        _("Status"),
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED,
         help_text=_("With Draft chosen, will only be shown for admin users "
-            "on the site."))
+                    "on the site."))
     sort_order = models.SmallIntegerField(editable=False)
 
     def __str__(self):

@@ -8,5 +8,5 @@
 Mezzanine BS Banners
 Making it easier to manage attention grabbing and compelling banners
 """
-__version__ = '0.1.5'
+__version__ = '0.1.6'
 __author__ = 'Alan Hicks'
