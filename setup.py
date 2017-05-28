@@ -31,9 +31,10 @@ setup(
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
-        'Framework :: Django',
+        'Framework :: Django :: 1.9',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
+        'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
@@ -41,5 +42,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='banner, carousel',
+    keywords='banner carousel',
 )
