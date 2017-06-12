@@ -57,7 +57,7 @@ Dependencies
 ============
 
 * `Django`_ 1.9
-* `Mezzanine`_ 3.x
+* `Mezzanine`_ 4.x
 * `Bootstrap`_ 3.x
 
 Support
