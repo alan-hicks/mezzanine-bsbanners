@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('showindicators', models.BooleanField(default=True, verbose_name='Show indicators')),
                 ('animate', models.BooleanField(default=True, verbose_name='Animate transitions')),
                 ('status', models.SmallIntegerField(default=2, help_text='With Draft chosen, will only be shown for admin users on the site.', verbose_name='Status', choices=[(1, 'Draft'), (2, 'Published')])),
-                ('site', models.ForeignKey(editable=False, to='sites.Site')),
+                ('site', models.ForeignKey(editable=False, to='sites.Site', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['title'],
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
                 ('image', models.FileField(max_length=255, upload_to=b'slides/', null=True, verbose_name='Image', blank=True)),
                 ('status', models.SmallIntegerField(default=2, help_text='With Draft chosen, will only be shown for admin users on the site.', verbose_name='Status', choices=[(1, 'Draft'), (2, 'Published')])),
                 ('sort_order', models.SmallIntegerField(editable=False)),
-                ('banner', models.ForeignKey(to='mezzanine_bsbanners.Banners')),
+                ('banner', models.ForeignKey(to='mezzanine_bsbanners.Banners', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['sort_order'],

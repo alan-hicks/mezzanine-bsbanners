@@ -15,18 +15,21 @@ The following Bootstrap layouts are supported:
 
 * Carousel
 * Jumbotron
+* Image
 
 The Django sites framework is supported.
 
 .. index::
     single: Bootstrap carousel
     single: Carousel
-    single: Banner; Carousel
+    single: Jumbotron
+    single: Image
+    single: Banner; Carousel; Jumbotron; Image
 
 Carousel
 --------
 
-Bootstrap carousel for images with impact.
+Bootstrap carousel for animated content with images and impact.
 
 A Carousel consists of a **banner** with settings for the carousel and a number
 of **slides** each with an *image* and a *call to action*.
@@ -35,6 +38,7 @@ of **slides** each with an *image* and a *call to action*.
     single: Banner; Carousel
     single: Collection of slides
     single: Title
+    single: Animation
     single: Bannertype Carousel
     single: URL
 
@@ -122,6 +126,11 @@ Animate transitions
 ...................
 
 Adds a little eye candy to the slide transitions.
+
+Transition type
+...................
+
+Traditional slide or fade transition.
 
 .. index::
     single: Status; Carousel

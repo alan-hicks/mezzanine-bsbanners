@@ -29,16 +29,15 @@ window.setTimeout(function()
 
 <!-- Carousel
 ================================================== -->
-<div id='{{ bsbannerblock.slug }}-carousel'
-     class="carousel slide{% if bsbannerblock.carouseltransition == 'fade' %} carousel-fade{% endif %}">
+<div id='{{ bsbannerblock.slug }}-carousel' class="carousel slide">
     <div class="carousel-inner">
     {% for slide in slides %}
-    <div class="carousel-item{% if slide.isfirst %} active{% endif %}">
+    <div class="item{% if slide.isfirst %} active{% endif %}">
         {% if slide.link_url and slide.image %}
         <a href="{{ slide.link_url }}">
         {% endif %}
         {% if slide.image %}
-        <img src="{{ MEDIA_URL }}{{ slide.image }}" alt="{{ slide.title }}" class="d-block w-100">
+        <img src="{{ MEDIA_URL }}{{ slide.image }}" alt="{{ slide.title }}">
         {% endif %}
         {% if slide.link_url and slide.image %}
         </a>
@@ -50,20 +49,15 @@ window.setTimeout(function()
             {% endif %}
             <div>{{ slide.content | safe }}</div>
             {% if slide.link_url %}
-            <a  href="{{ slide.link_url }}"
-            {% if slide.buttontype == 'default' %}
-                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-outline-primary"
-            {% else %}
-                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
-            {% endif %}
-                >
+            <a class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+                href="{{ slide.link_url }}">
             {% endif %}
             {% if bsbannerblock.ctachevron == 'left' %}
-            <span class="fas fa-chevron-left"></span>
+            <span class="glyphicon glyphicon-chevron-left"></span>
             {% endif %}
             {{ slide.cta }}
             {% if bsbannerblock.ctachevron == 'right' %}
-            <span class="fas fa-chevron-right"></span>
+            <span class="glyphicon glyphicon-chevron-right"></span>
             {% endif %}
             {% if slide.link_url %}
             </a>
@@ -73,96 +67,85 @@ window.setTimeout(function()
     </div>
     {% endfor %}
     </div>
-    <a class="carousel-control-prev" href="#{{ bsbannerblock.slug }}-carousel" data-slide="prev" role="button">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#{{ bsbannerblock.slug }}-carousel" data-slide="next" role="button">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <a class="left carousel-control" href="#{{ bsbannerblock.slug }}-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#{{ bsbannerblock.slug }}-carousel" data-slide="next">&rsaquo;</a>
     {% if bsbannerblock.showindicators %}
     <ul class="carousel-indicators">
     {% for slide in slides %}
-        <li data-target="#{{ bsbannerblock.slug }}-carousel" data-slide-to="{{ forloop.counter0 }}" {% if slide.isfirst %} class="active"{% endif %}></li>
+        <li{% if slide.isfirst %} class="active"{% endif %}>&nbsp;</li>
     {% endfor %}
     </ul>
     {% endif %}
 </div><!-- /.carousel -->
 
 {% elif bsbannerblock.bannertype == 2 %}
-<div id='{{ bsbannerblock.slug }}-jumbotron' class="jumbotron w-100">
-{% for slide in slides %}
-    <div>
-    {% if slide.show_title %}
-        <h1>{{ slide.title }}</h1>
-    {% endif %}
-    {{ slide.content|safe }}
-    {% if slide.cta %}
-        {% if slide.link_url %}
-        <a href="{{ slide.link_url }}"
-            {% if slide.buttontype == 'default' %}
-                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-outline-primary"
-            {% else %}
-                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+<div id='{{ bsbannerblock.slug }}-jumbotron' class="jumbotron">
+    <div class="container">
+    {% for slide in slides %}
+        <div>
+        {% if slide.show_title %}
+            <h1>{{ slide.title }}</h1>
+        {% endif %}
+        {{ slide.content|safe }}
+        {% if slide.cta %}
+            {% if slide.link_url %}
+            <a class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
+                href="{{ slide.link_url }}">
             {% endif %}
-            role="button">
+            {% if bsbannerblock.ctachevron == 'left' %}
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {% endif %}
+            {{ slide.cta }}
+            {% if bsbannerblock.ctachevron == 'right' %}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            {% endif %}
+            {% if slide.link_url %}
+            </a>
+            {% endif %}
         {% endif %}
-        {% if bsbannerblock.ctachevron == 'left' %}
-        <span class="fas fa-chevron-chevron-left"></span>
-        {% endif %}
-        {{ slide.cta }}
-        {% if bsbannerblock.ctachevron == 'right' %}
-        <span class="fas fa-chevron-chevron-right"></span>
-        {% endif %}
-        {% if slide.link_url %}
-        </a>
-        {% endif %}
-    {% endif %}
+        </div>
+    {% endfor %}
     </div>
-{% endfor %}
 </div>
 
 {% elif bsbannerblock.bannertype == 3 %}
-    <div id="{{ bsbannerblock.slug }}-bannerblock" class="card w-100">
-    <div class="">
+    <div id="{{ bsbannerblock.slug }}-bannerblock" class="row carousel">
+    <div class="carousel-inner">
     {% for slide in slides %}
     {% if slide.isfirst %}
+        <div class="item active">
         {% if slide.image %}
             <a href="{{ slide.link_url }}">
             <img id="{{ bsbannerblock.slug }}-bannerimg"
-                class="card-img-top"
+                style="max-width: none;"
                 src="{{ MEDIA_URL }}{{ slide.image }}"
                 alt="{{ slide.title }}">
             </a>
         {% endif %}
-        <div class="card-body">
+        <div class="container">
+        <div class="carousel-caption">
         {% if slide.show_title %}
-        <h1 class="card-title">
+        <h1>
             {% if slide.link_url %}<a href="{{ slide.link_url }}">{% endif %}
             {{ slide.title }}
             {% if slide.link_url %}</a>{% endif %}
         </h1>
         {% endif %}
-        {{ slide.content|safe }}
+        <div>{{ slide.content|safe }}</div>
         {% if slide.cta %}
         <div>
             {% if slide.link_url %}
             <a id="{{ bsbannerblock.slug }}-bannerbtn"
-            {% if slide.buttontype == 'default' %}
-                class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-outline-primary"
-            {% else %}
                 class="btn {% if bsbannerblock.buttonsize != 'default' %}btn-{{ bsbannerblock.buttonsize }} {% endif %}btn-{{ slide.buttontype }}"
-            {% endif %}
                 title="{% if slide.show_title %}{{ slide.title }}{% endif %}"
                 href="{{ slide.link_url }}">
             {% endif %}
             {% if bsbannerblock.ctachevron == 'left' %}
-            <span class="fas fa-chevron-chevron-left"></span>
+            <span class="glyphicon glyphicon-chevron-left"></span>
             {% endif %}
             {{ slide.cta }}
             {% if bsbannerblock.ctachevron == 'right' %}
-            <span class="fas fa-chevron-chevron-right"></span>
+            <span class="glyphicon glyphicon-chevron-right"></span>
             {% endif %}
             {% if slide.link_url %}
             </a>
@@ -176,5 +159,24 @@ window.setTimeout(function()
     {% endfor %}
     </div>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(event) {
+            $(function () {
+                var mainbody = $('body');
+                var bodymargintop = parseInt(mainbody.css('padding-top'));
+                var bannerblock = $('#{{ bsbannerblock.slug }}-bannerblock');
+                var bannerimg = $('#{{ bsbannerblock.slug }}-bannerimg');
+                var windowratio = window.innerWidth / window.innerHeight;
+                var bannerratio = bannerimg.width() / bannerimg.height();
+                bannerblock.height(window.innerHeight - bodymargintop);
+                if (windowratio > bannerratio) {
+                    bannerimg.width(window.innerWidth);
+                } else {
+                    bannerimg.height(window.innerHeight - bodymargintop);
+                }
+                bannerblock.css('overflow', 'hidden');
+            })
+        });
+    </script>
 
 {% endif %}

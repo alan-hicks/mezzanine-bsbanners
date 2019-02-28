@@ -1,5 +1,5 @@
 #----------------------------------------------------------------------
-# Copyright (c) 2014, Persistent Objects Ltd http://p-o.co.uk/
+# Copyright (c) 2014-2019, Persistent Objects Ltd https://p-o.co.uk/
 #
 # License: BSD
 #----------------------------------------------------------------------
@@ -57,6 +57,12 @@ class Banners(Slugged):
         (CTACHEVRON_LEFT, _('Left')),
         (CTACHEVRON_RIGHT, _('Right')),
     )
+    CAROUSEL_TRANSITION_SLIDE = 'slide'
+    CAROUSEL_TRANSITION_FADE = 'fade'
+    CAROUSEL_TRANSITION_CHOICES = (
+        (CAROUSEL_TRANSITION_SLIDE, _('Slide')),
+        (CAROUSEL_TRANSITION_FADE, _('Fade')),
+    )
     bannertype = models.SmallIntegerField(
         choices=BANNERTYPE_CHOICES,
         default=BANNERTYPE_CAROUSEL
@@ -95,6 +101,13 @@ class Banners(Slugged):
     )
     showindicators = models.BooleanField(_('Show indicators'), default=True)
     animate = models.BooleanField(_('Animate transitions'), default=True)
+    carouseltransition = models.CharField(
+        _('Carousel transition'),
+        choices=CAROUSEL_TRANSITION_CHOICES,
+        default=CAROUSEL_TRANSITION_SLIDE,
+        max_length=5,
+        help_text=_('Animate slides with a slide or fade transition.')
+    )
     status = models.SmallIntegerField(
         _("Status"),
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED,
@@ -167,7 +180,7 @@ class Slides(RichText):
         max_length=7,
         help_text=_('Call to action button type (colour)')
     )
-    banner = models.ForeignKey(Banners)
+    banner = models.ForeignKey(Banners, on_delete=models.CASCADE)
     image = models.FileField(
         _("Image"),
         upload_to=settings.MEDIA,

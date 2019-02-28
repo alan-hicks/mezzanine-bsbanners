@@ -1,5 +1,5 @@
 #----------------------------------------------------------------------
-# Copyright (c) 2014, Persistent Objects Ltd http://p-o.co.uk/
+# Copyright (c) 2014-2019, Persistent Objects Ltd https://p-o.co.uk/
 #
 # License: BSD
 #----------------------------------------------------------------------

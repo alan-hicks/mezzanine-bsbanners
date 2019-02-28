@@ -34,7 +34,7 @@ Copyright
 =========
 
 Mezzanine BS Banners and this documentation is
-Copyright (c) 2017, Persistent Objects Ltd.
+Copyright (c) 2017-2019, Persistent Objects Ltd.
 All rights reserved.
 
 License

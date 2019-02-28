@@ -50,7 +50,7 @@ home.html::
     {% endblock %}
 
     {% block main %}
-    <div id="content" class="col-md-12">
+    <div id="content">
 
         {% bsbanner "home-banner" %}
 
